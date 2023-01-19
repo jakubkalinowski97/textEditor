@@ -37,7 +37,7 @@ export class HistoryUI {
             let item = document.createElement('li');
 
             item.classList.add('history__item', 'history__item--added');
-            item.innerText = `${command.constructor.name} - backup: ${command['backup']['content']}`;
+            item.innerText = `command backup: ${command['backup']['content']}`;
 
             list.appendChild(item);
         } 

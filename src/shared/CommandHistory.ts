@@ -5,7 +5,7 @@ import { HistoryEventStatus } from "./models/HistoryEventStatus.enum";
 
 export class CommandHistory {
     history: Command[] = [];
-    subscribers: SubscriptionCallback<HistoryEvent>[] = [];
+    private subscribers: SubscriptionCallback<HistoryEvent>[] = [];
 
     push(command: Command): void {
         this.history.push(command);
