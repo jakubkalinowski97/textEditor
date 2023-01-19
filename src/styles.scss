@@ -1,0 +1,183 @@
+$font-color: rgb(33, 33, 33);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    opacity: 0.8;
+    background-color: #e5e5f7; 
+    background-image:  linear-gradient(#c6c9fc 2px, transparent 2px), linear-gradient(90deg, #c6c9fc 2px, transparent 2px), linear-gradient(#c6c9fc 1px, transparent 1px), linear-gradient(90deg, #c6c9fc 1px, #e5e5f7 1px);
+    background-size: 100px 100px, 100px 100px, 10px 10px, 10px 10px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+#root {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: $font-color;
+
+    .toolbar {
+        width: auto;
+        padding: 10px;
+        margin: 5px 10px;
+        background: rgba(255, 255, 255, 0.999);
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid #000000;
+
+        .toolbar__action {
+            cursor: pointer;
+            border-radius: 9px;
+            margin: 5px;
+            padding: 5px 10px;
+            outline: transparent;
+            border: 1px solid #c6c9fc;
+            transition: 0.1s;
+            :last-of-type {
+                margin-right: 0;
+            }
+
+            :first-of-type {
+                margin-left: 0;
+            }
+        }
+
+        .toolbar__action:hover {
+            background: #c6c9fc;
+        }
+    }
+
+    .textarea {
+        height: 60%;
+        min-height: 250px;
+        margin: 5px 10px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9px);
+        outline: transparent;
+        transition: 0.1s;
+        font-size: medium;
+        resize: none;
+    }
+
+    .textarea:focus {
+        outline: 2px solid #646cff;
+    }
+
+    .history {
+        height: 30%;
+        min-height: 250px;
+        max-height: 30%;
+        margin: 5px 10px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid #000000;
+        backdrop-filter: blur(9px);
+        outline: transparent;
+        transition: 0.1s;
+        font-size: medium;
+        overflow-y: auto;
+
+        .history__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            .history__item {
+                border-radius: 9px;
+                margin: 5px;
+                padding: 5px 10px;
+                outline: transparent;
+                border: 1px solid #c6c9fc;
+                :last-of-type {
+                    margin-right: 0;
+                }
+    
+                :first-of-type {
+                    margin-left: 0;
+                }
+            }
+
+            .history__item--added {
+                animation: addItem 0.2s;
+            }
+
+            .history__item--removed {
+                animation: removeItem 0.2s;
+            }
+
+            @keyframes addItem {
+                from {
+                    transform: translateX(-200px);
+                    opacity: 0.3;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes removeItem {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(-200px);
+                    opacity: 0.3;
+                }
+            }
+        }
+    }
+
+    .context-menu {
+        position: fixed;
+        width: 150px;
+        background: #c6c9fc;
+        border-radius: 9px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(12px);
+        outline: 1px solid #646cff;
+        overflow: hidden;
+
+        .context-menu__item {
+            cursor: pointer;
+            font-size: small;
+            text-align: left;
+            width: 100%;
+            padding: 5px 10px;
+            outline: transparent;
+            border: none;
+            border-bottom: 1px solid #c6c9fc;
+            transition: 0.1s;
+            :last-of-type {
+                margin-right: 0;
+            }
+
+            :first-of-type {
+                margin-left: 0;
+            }
+        }
+
+        .context-menu__item:hover {
+            background: #c6c9fc;
+        }
+    }
+}
